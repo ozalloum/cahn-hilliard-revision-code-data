@@ -1,0 +1,106 @@
+NUMERICAL VALIDATION CAMPAIGN
+
+Purpose: replace previously acknowledged evidence gaps with reproducible
+experiments. Negative comparisons and failed resolution checks are retained.
+Original numerical results remain identified as legacy-grid comparisons.
+
+1. Recover the 600-trajectory / 9,600-pair filter from documented seeds and
+   save both coefficients and per-trajectory sufficient statistics. This is
+   a regenerated fit, not recovery of the unavailable original array.
+2. Independently test the original formula and a new Galerkin formulation
+   with 2N cubic padding, zero Nyquist coordinate planes, normalized Fourier
+   coefficients, and consistent padded-quadrature free energy. Verify the
+   energy-gradient identity and manufactured cubic projection. ETDRK4 uses
+   32-point upper-half-circle contour coefficients and fourth-order stages.
+3. Space: N=64,128,256,512; one analytic periodic two-rectangle field and
+   three shared random trigonometric polynomials. Times .0035,.035,.070.
+   Time: ETDRK4 h=1e-4,5e-5; refine further if differences are material.
+   Aim for a finest-grid difference below 1e-3 for field-level interpretation,
+   and temporal differences below one tenth of the spatial difference or
+   surrogate-comparator difference. These are empirical criteria, not bounds.
+   Fourier-interpolate the smaller solution and compare on the larger grid,
+   so omitted high modes contribute to the field error. Nyquist planes are
+   zero in the Galerkin data. Aliasing comparisons use identical grid samples.
+4. Original reference: 100/200/400 substeps at .0035 against independently
+   refined ETDRK4 on the same collocation discretization. Spatial accuracy is
+   a separate question. Never label the original 100-substep reference exact.
+5. Re-evaluate all 100 short tests and the first ten through 700 steps with
+   C1/C6/C12/C100, safe/unsafe residual, full-rank periodic shift-equivariant
+   piDMD, and independent ETDRK4. Keep fields, per-trajectory results and
+   safeguard logs. Treat 350/700 checkpoints as correlated observations.
+6. Fit the published BCCB piDMD least-squares class on the same 9,600 input /
+   target pairs. A(0)=1 preserves mean; no rank truncation or spectral-radius
+   clipping. This is a reimplementation of that linear model class, not a
+   neural-operator benchmark or claimed reproduction of a published CH test.
+7. Stress: amplitude [.08,.3,.6,1,1.5], epsilon [.01,.02,.04], macro step
+   [1e-6,1e-4,1e-3,1e-2], means 0 and 1, three random fields per mean = 360
+   one-step cases. Retain nonfinite failures separately. Select a finite
+   activating case for a clearly labeled diagnostic rollout, with a temporal
+   reference. Also test a controlled overshoot and a finite 34-trial fallback.
+8. New Galerkin filters on N=128,256: 60 independent training trajectories,
+   16 states each, same cutoff 28 and ridge 1e-12, ETDRK4 teacher h=2.5e-5.
+   The training budget is 960 pairs, not the original 9,600. Test ten shared
+   new continuous fields at .0035; first three and rectangles through .070.
+   Report frozen legacy-filter transfer separately from these new fits.
+9. Cost: one common machine, five initial fields, five repetitions, warmup
+   for each configuration, rotating method order. Include C1/6/12/24/100,
+   safe residual, piDMD, fixed ETDRK4, and step-doubling adaptive semi-implicit
+   and ETDRK4 methods at three tolerances. Report achieved error, wall-time
+   dispersion, rejection counts and offline costs. No simultaneous campaign
+   numerical process during cost.py; other desktop activity is uncontrolled.
+10. Fit uncertainty: 200 bootstrap resamples of 600 whole training trajectories
+    using stored sufficient statistics; fixed first ten test fields for
+    conditional evaluation. Test uncertainty: separate paired trajectory
+    bootstrap. Neither treats the 9,600 states as independent observations.
+11. Sensitivities: cutoff [16,24,28,31], ridge [1e-12,1e-6,1,1000] on 20
+    independent validation fields; retain all settings without retuning the
+    nominal method using the test set. Shift ensembles: ten fields each for
+    epsilon, mobility, amplitude, smoothing, mean and a joint displacement.
+    Matched MT and matched M*macro_dt mobility runs are an exact time-rescaling
+    control, not additional independent generalization evidence.
+
+All arrays are float64/complex128. All new seeds, parameters and fields are
+specified in the scripts and stored with results. New runs do not establish
+unconditional stability, a fixed-34-trial positive-step guarantee, universal
+generalization, or performance on nonperiodic/irregular/3D domains.
+
+Primary algorithm references:
+Kassam & Trefethen, SIAM J Sci Comput 26 (2005), 1214-1233,
+doi:10.1137/S1064827502410633; official author PDF:
+https://people.maths.ox.ac.uk/trefethen/fourth-order.pdf
+Baddoo et al., Proc R Soc A 479 (2023), 20220576,
+doi:10.1098/rspa.2022.0576; author implementation:
+https://github.com/baddoo/piDMD
+
+AMENDMENTS AFTER INITIAL PILOT RESULTS
+The 256-to-512 late-time random0 difference exceeded 1e-3, so the stated
+refinement rule triggers a further N=768 run. The 360-case stress sweep did
+not activate at moderate amplitudes, so a separate exploratory 12-case
+extension at mean 1, epsilon .02, amplitudes .08/.3, dt=1e-7/1e-8 and three
+seeds is retained in its own CSV. A selected activating case illustrates
+behavior outside the fixed-step training regime, not typical performance.
+The real-FFT optimization is mathematically equivalent to the full-complex
+Galerkin kernel and was verified before resuming saved checkpoints. Early
+checkpoints used the full-complex kernel. Both are supplied. Campaign wall
+times under concurrency are not used as comparative solver benchmarks.
+Legacy radial-bin membership and the four axial cutoff-boundary exclusions
+are explicitly matched to the original floating-point wavenumber formula.
+All structure-factor metrics are refreshed from saved fields using these bins.
+The final timing comparison omits campaign-only per-step logging and extra
+post-mean diagnostic energy evaluation; it includes the original online
+candidate energy tests, backtracking, mean corrections and any fallback.
+Reference QA exposed amplified conjugate-symmetry roundoff in a long-time
+Fourier ETDRK4 state. The corrected reference Hermitian-averages after every
+step, as required by its real-field representation. Real-FFT and full-complex
+implementations agree to 2.43e-16 on a long rectangle regression test; step
+halving gives 3.21e-9. All spatial references are recomputed, and independent
+ETD reference fields/metrics in the existing comparator runs are replaced.
+Pre-fix runs are excluded from scientific results and retained only in the
+internal rejected_reference_run audit directory. Original solver/filter
+outputs are unaffected by this reference-solver correction.
+
+Fixed-step cost comparisons use the labeled ETDRK4 step and shorten only
+the final step; both coefficient sets are warmed. Refinement runs use a
+uniform subdivision of each checkpoint interval, at or below the stated h.
+The 24-entry ETDRK4 coefficient cache can be evicted by adaptive runs;
+any resulting reconstruction is included in the measured wall time.

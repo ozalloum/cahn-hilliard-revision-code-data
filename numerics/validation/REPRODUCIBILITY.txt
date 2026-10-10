@@ -1,0 +1,75 @@
+EXPANDED VALIDATION - NUMERICAL REPRODUCTION
+
+Python 3.12.14, NumPy 2.3.5, pandas 3.0.1 were used. No neural-network or
+GPU dependencies are required. Full arrays use float64/complex128. The
+original submitted files remain in the neighboring submitted directory.
+Install the numerical dependencies in your chosen Python environment with:
+  python -m pip install -r numerics/validation/requirements.txt
+
+Extract Cahn_Hilliard_code_and_validation_data.zip into a new directory.
+This repository archive combines all numerical sources, settings, model
+arrays, CSVs, JSON summaries, full fields and trajectory statistics.
+No separate journal revision archive is needed.
+
+Quick formula checks:
+  python numerics/validation/run_campaign.py --stage verify
+
+Complete independent reproduction in a NEW output directory:
+  python numerics/validation/run_campaign.py --stage all --output-dir results_reproduced
+
+This is a sustained CPU workload. The driver runs stages sequentially, with
+the comparative timing stage separate from other numerical stages. The
+default results directory reuses completed fits/rollouts; choose a new
+output directory to regenerate them independently. Floating-point and wall
+time differences across hardware/software are expected. Absolute timing
+figures are measurements on the documented machine, not portable constants.
+
+run_campaign.py stages: verify, legacy, convergence, finer, uncertainty,
+stress, cost, summary. Stage dependencies must exist in the chosen output
+directory (e.g., fitting precedes bootstrap and rollout evaluation).
+
+kernel.py defines the original collocation operator and full-complex
+Galerkin/reference kernels. kernel_fast.py computes the equivalent padded
+cubic with real FFTs. ETDRK4 Hermitian-averages its state after every step.
+The original fitting/projection code is not retrospectively described as
+performing that operation. Long-time reference verification is supplied.
+
+fit_legacy.py saves the regenerated legacy R and piDMD multipliers plus
+per-trajectory sufficient statistics. These regenerate the missing original
+filter; the original array was not recovered. The legacy cutoff excludes
+four nominal radius-28 axial modes because of the original floating-point
+wavenumber formula. Legacy radial-bin membership uses that formula too.
+The new Galerkin model uses integer modes, zero Nyquist planes and 2N cubic
+padding. It is a separate spatial model, not a silent replacement.
+
+Results:
+- legacy_rollout_*.npz: all method fields at stored macro-step checkpoints.
+- legacy_all_metrics.csv: deduplicated 100 short / ten long trajectory data.
+- galerkin_rollout_N*.npz: frozen/refitted/coarse/reference fine-grid fields.
+- convergence_*.npz: continuous-data grid/time refinement checkpoints.
+- stress_sweep.csv: complete prespecified 360-case sweep including failures.
+- stress_smallstep_extension.csv: explicitly exploratory 12-case extension.
+- stress_rollout*.csv/npz: selected out-of-regime example with active damping.
+- training_bootstrap.csv and bootstrap_filters.npz: 200 whole-trajectory fits.
+- hyperparameter_sensitivity.csv: all 16 settings on 20 validation fields.
+- shift_ensemble.csv: 15 ten-field settings, with all three comparator rows.
+- cost_raw.csv: 16 configurations x five fields x five repeated timings.
+- reference_substeps.csv: teacher refinement at 100/200/400 substeps.
+- *_summary.csv / evidence_summary.json: derived reporting tables.
+- *_verification.json: kernel/reference implementation checks.
+
+Reference-correction audit records document a preliminary reference solver
+that failed long-time conjugate-symmetry QA and was corrected. Preliminary
+fields are excluded from reported scientific results and from these archives.
+The archived original C100/surrogate fields were unaffected. Reported main
+results use the corrected references. Some early Galerkin fitting/checkpoint
+calculations used the full-complex implementation; later ones used the
+verified equivalent real-FFT implementation. Cross-kernel tests quantify
+roundoff agreement. Campaign fit wall times under concurrency are not used
+as comparative solver timings. Current file hashes appear in the manifests.
+
+The campaign supplies evidence for the stated periodic two-dimensional
+problem. Neither the driver nor the data establish general stability,
+nonperiodic/irregular/3D performance, or a universal solver-speed advantage.
+The piDMD comparison is a reimplementation of the published periodic BCCB
+linear class on this dataset, not a neural-operator benchmark.
