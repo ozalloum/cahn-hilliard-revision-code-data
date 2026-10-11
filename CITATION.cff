@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: "Please cite this version when using the code and validation data."
 title: "Cahn-Hilliard reproduction code and validation data"
-version: 1.0
+version: "1.0"
 type: software
 authors:
   - family-names: Zalloum
