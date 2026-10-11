@@ -1,0 +1,30 @@
+{
+  "runs": [
+    {
+      "name": "fast128",
+      "energy": 0.031036268233173795,
+      "energy_increases": 0,
+      "max_imag": 4.50246250002037e-16,
+      "max_field": 1.0152591973463052,
+      "seconds": 16.503628299979027
+    },
+    {
+      "name": "fast128_half",
+      "energy": 0.031036268232726972,
+      "energy_increases": 0,
+      "max_imag": 5.675027149563443e-16,
+      "max_field": 1.0152592202544102,
+      "seconds": 29.35405839997111
+    },
+    {
+      "name": "full128",
+      "energy": 0.0310362682331738,
+      "energy_increases": 0,
+      "max_imag": 5.02640319987399e-16,
+      "max_field": 1.0152591973463052,
+      "seconds": 40.256504599994514
+    }
+  ],
+  "time_refinement": 3.210678008291753e-09,
+  "complex_real_agreement": 2.4261305935832644e-16
+}

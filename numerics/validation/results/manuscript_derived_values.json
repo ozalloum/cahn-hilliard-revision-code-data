@@ -1,0 +1,8 @@
+{
+  "title": "A Spectral-Residual Correction for Cahn--Hilliard Simulation: Accuracy, Safeguards and Computational Cost",
+  "fastest_dominating_method": "ETD_h0.0004",
+  "main_short_l2": 0.0078608801158338,
+  "six_short_l2": 0.0146919492362878,
+  "twelve_short_l2": 0.0075383730606358,
+  "source_sha256": "566ebabd88285b72b459cb052f68ddf7401a3953ab1e3e1c04589b96339b6b51"
+}

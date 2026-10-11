@@ -1,0 +1,28 @@
+{
+  "legacy_ic_max": 1.3877787807814457e-16,
+  "legacy_reference_max": 1.1657341758564144e-15,
+  "legacy_energy_diff": 0.0,
+  "dealiased_cubic_projection_max": 1.6653345369377348e-15,
+  "padding_roundtrip_max": 1.180674923682879e-16,
+  "energy_gradient_identity_error": 1.4318225424747588e-12,
+  "etd_linear_exact_max": 1.939479807224432e-18,
+  "etdrk4_h": [
+    0.004,
+    0.002,
+    0.001,
+    0.0005,
+    0.00025
+  ],
+  "etdrk4_errors": [
+    2.2945470545055154e-10,
+    1.4081314704481174e-11,
+    8.690981681817156e-13,
+    5.108802777321886e-14
+  ],
+  "etdrk4_observed_orders": [
+    4.0263554496864185,
+    4.01811908298943,
+    4.088461997098597
+  ],
+  "etd_mass_error": 6.938893903907228e-18
+}

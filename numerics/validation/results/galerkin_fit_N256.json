@@ -1,0 +1,15 @@
+{
+  "n": 256,
+  "reference_seconds": 393.24084039981244,
+  "coarse_seconds": 147.34908710164018,
+  "regression_seconds": 19.994086798862554,
+  "total_seconds": 561.4476734000491,
+  "concurrent_campaign_jobs_possible": true,
+  "timing_scope": "campaign wall time, not an isolated timing benchmark",
+  "kind": "2N-padded Galerkin with zero Nyquist planes",
+  "teacher": "ETDRK4 h=2.5e-5",
+  "training_seeds": "continuous_random indices 1000..1059; mean RNG 20261006+i",
+  "cutoff": 28,
+  "regularizer": 1e-12,
+  "hermitian_error": 1.3052752982264214e-18
+}

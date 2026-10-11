@@ -1,0 +1,25 @@
+{
+  "stress_sweep_rows": 360,
+  "stress_smallstep_extension_rows": 12,
+  "training_bootstrap_rows": 200,
+  "hyperparameter_sensitivity_rows": 320,
+  "shift_ensemble_rows": 450,
+  "reference_substeps_rows": 12,
+  "cost_raw_rows": 400,
+  "archive_reproduction": {
+    "trajectories": 100,
+    "max_absolute_field_metric_difference": 4.10999359545805e-14,
+    "max_absolute_structure_metric_difference": 1.649993076197065e-14,
+    "regenerated_mean_field_error": 0.007303137338221602
+  },
+  "legacy_short_trajectories": 100,
+  "legacy_long_trajectories": 10,
+  "fine_short_random_trajectories_per_grid": 10,
+  "fine_long_random_trajectories_per_grid": 3,
+  "deterministic_cases_per_grid": 1,
+  "all_expected_campaign_products_present": true,
+  "regular_fields_finite": true,
+  "reference_energy_checks_pass": true,
+  "latex_labels_and_citations_valid": true,
+  "manuscript_sha256": "566ebabd88285b72b459cb052f68ddf7401a3953ab1e3e1c04589b96339b6b51"
+}

@@ -1,0 +1,12 @@
+{
+  "cpu": "Intel(R) Core(TM) i7-4770K CPU @ 3.50GHz",
+  "logical_processors": 8,
+  "memory_bytes": 17114976256,
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "numpy": "2.3.5",
+  "platform": "Windows-10-10.0.19045-SP0",
+  "precision": "float64/complex128",
+  "fft": "NumPy pocketfft",
+  "gpu": "not used",
+  "clock_policy": "uncontrolled desktop operating conditions"
+}

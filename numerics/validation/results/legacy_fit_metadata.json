@@ -1,0 +1,21 @@
+{
+  "trajectories": 600,
+  "pairs": 9600,
+  "times": {
+    "reference": 614.7067819040385,
+    "coarse": 37.775435597926844,
+    "regression": 6.375425600854214,
+    "total": 664.8874696001876
+  },
+  "filter_hermitian_max": 1.734758424005653e-18,
+  "pidmd_hermitian_max": 3.330681011834966e-15,
+  "retained_nonzero_modes": 2448,
+  "axial_boundary_modes_excluded_by_original_floating_point_cutoff": true,
+  "numerator_denominator_trajectory_sufficient_statistics_saved": true,
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "numpy": "2.3.5",
+  "platform": "Windows-10-10.0.19045-SP0",
+  "logical_processors": 8,
+  "source_hash": "4b96eb58f32770be324c5f788d21d7c5548a7becaf68c7f3cd6dd003a26a6ed8",
+  "kernel_hash": "a5d7186da2bd52ba5cc43df72fbeb198c28b16fa7a72cb89d17d6812e611f5ad"
+}

@@ -1,0 +1,45 @@
+{
+  "cubic_tests": [
+    {
+      "n": 16,
+      "cubic_max_difference": 9.69739903612216e-19,
+      "energy_difference": 0.0,
+      "semi_relative_difference": 8.178764537360705e-16,
+      "full_seconds": 0.00036340003134682775,
+      "real_seconds": 0.0002361999941058457
+    },
+    {
+      "n": 64,
+      "cubic_max_difference": 6.321930712049743e-19,
+      "energy_difference": 0.0,
+      "semi_relative_difference": 1.2326102943530846e-15,
+      "full_seconds": 0.0017588000046089292,
+      "real_seconds": 0.0008066999725997448
+    },
+    {
+      "n": 128,
+      "cubic_max_difference": 3.428548309156935e-19,
+      "energy_difference": 0.0,
+      "semi_relative_difference": 1.5687934369866813e-15,
+      "full_seconds": 0.007043800025712699,
+      "real_seconds": 0.0034593999735079706
+    },
+    {
+      "n": 256,
+      "cubic_max_difference": 2.2351400383409363e-19,
+      "energy_difference": 0.0,
+      "semi_relative_difference": 1.073982190998058e-15,
+      "full_seconds": 0.03764950000913814,
+      "real_seconds": 0.01292110001668334
+    },
+    {
+      "n": 512,
+      "cubic_max_difference": 1.3590590187617308e-19,
+      "energy_difference": 0.0,
+      "semi_relative_difference": 1.374414488990636e-15,
+      "full_seconds": 0.16787590004969388,
+      "real_seconds": 0.06888920004712418
+    }
+  ],
+  "short_rollout_relative_difference": 2.0612639711218922e-16
+}

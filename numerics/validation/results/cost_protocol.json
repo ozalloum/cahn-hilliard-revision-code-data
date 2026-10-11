@@ -1,0 +1,19 @@
+{
+  "hardware": "Intel Core i7-4770K @ 3.50GHz",
+  "logical_processors": 8,
+  "physical_memory_gib": 15.93956,
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "numpy": "2.3.5",
+  "platform": "Windows-10-10.0.19045-SP0",
+  "precision": "float64/complex128",
+  "fft": "NumPy pocketfft",
+  "other_campaign_jobs_running": false,
+  "thread_policy": "No BLAS matrix products or explicit FFT worker threads; operating-system scheduling, clock and other desktop applications not controlled",
+  "trajectories": 5,
+  "repeats": 5,
+  "warmup": "one complete rollout per configuration per initial state",
+  "statistic": "sample SD across 25 measured times; errors average the five distinct fields",
+  "fixed_ETD_coefficients": "cached after warmup; cache can evict under changing adaptive steps, such work is timed",
+  "adaptive": "step doubling, accepted two-half-step field, p=1 or 4, atol=rtol*1e-3, RMS scaled norm, safety=.9, factor range [.2,5], initial h=1e-4,max h=5e-4",
+  "reference": "same-grid ETDRK4 h=1.25e-5; spatial error excluded from accuracy-cost interpretation"
+}

@@ -1,0 +1,18 @@
+{
+  "retained_mode_count": 2448,
+  "training_residual_relative_squared_loss": 0.005135501287043417,
+  "denominator_min": 3470.919276988738,
+  "denominator_max": 3423485.872223552,
+  "regularizer": 1e-12,
+  "training_units": 600,
+  "states_per_unit": 16,
+  "bootstrap_units": "entire trajectories, with replacement; 600 draws per fit",
+  "bootstrap_replicates": 200,
+  "bootstrap_seed": 20261005,
+  "evaluation": "first ten documented test trajectories, fixed during bootstrap; conditional on those ten states",
+  "intervals": "percentile intervals from 200 bootstrap fits; Monte Carlo quantile precision limited",
+  "conditional_mean_error_percentile95": [
+    0.0076849580730674,
+    0.007685430209992413
+  ]
+}
