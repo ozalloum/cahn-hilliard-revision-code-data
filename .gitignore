@@ -1,6 +1,8 @@
 __pycache__/
 *.py[cod]
 .venv/
+verification_results/
 results_reproduced/
 *.npz
 *.zip
+numerics/validation/figure_*.tex

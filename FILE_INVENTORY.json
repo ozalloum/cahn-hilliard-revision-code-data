@@ -86,8 +86,8 @@
   },
   {
     "path": "numerics/validation/REPRODUCIBILITY.txt",
-    "bytes": 4515,
-    "sha256": "a8f9ca912cd7548f4d4c48dbbb6bbff626250314b38a257a84d65c3352e9526d"
+    "bytes": 5215,
+    "sha256": "bb6c8cb5301437619cd8a8544a2073368cac6946be53dba879621f232224e224"
   },
   {
     "path": "numerics/validation/analyze.py",
@@ -110,9 +110,14 @@
     "sha256": "3558765701145cbd7fec567d2d1d588d932b2b344e8976290d937380544fd959"
   },
   {
+    "path": "numerics/validation/figure_captions.json",
+    "bytes": 5533,
+    "sha256": "29f291ac8c341e15a54e9cb1ed84d53c6b463df0409ed3402c7b957d949b0e2d"
+  },
+  {
     "path": "numerics/validation/figures.py",
-    "bytes": 8700,
-    "sha256": "6ee865bc4eba161b12a9c626001bc8d8c6effc8d8a45b0bb2e0c27123c088ebf"
+    "bytes": 9343,
+    "sha256": "12904d25543b2d8e1b7679d31da810d47c8713edb51f8eb3850ebe005b44cdd3"
   },
   {
     "path": "numerics/validation/fit_legacy.py",

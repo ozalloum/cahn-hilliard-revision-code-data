@@ -1,0 +1,13 @@
+Code and validation data for A Spectral-Residual Correction for Cahn-Hilliard Simulation: Accuracy, Safeguards and Computational Cost
+
+This dataset provides reproduction code and numerical data for the study "A Spectral-Residual Correction for Cahn-Hilliard Simulation: Accuracy, Safeguards and Computational Cost" by Othman H. Y. Zalloum.
+
+The study evaluates a fitted diagonal Fourier residual correction combined with a nonlinear numerical propagator and explicit mass/energy safeguards for the two-dimensional periodic Cahn-Hilliard equation. The files contain the original submitted reproduction script and CSV results, expanded validation scripts, complete experimental settings and random seeds, regenerated legacy and finer-grid filters, trajectory-level fitting statistics, full simulation fields, per-case diagnostics, repeated timing measurements, and statistical summaries.
+
+The expanded campaign includes independent temporal references, dealiased spatial refinement, 128- and 256-grid surrogate experiments, a smooth deterministic initial geometry, matched long-time baselines, active-safeguard diagnostics, whole-trajectory bootstrap fits, parameter/input shifts, a periodic BCCB piDMD comparator, and repeated fixed/adaptive-solver timings.
+
+The original fitted filter array was not retained. The supplied reconstruction follows the documented protocol and reproduces archived short-time metrics to floating-point roundoff. The original unpadded and dealiased Galerkin spatial formulations are explicitly distinguished. Results include failed cases and comparisons unfavorable to the learned correction; the study does not establish a general solver-speed advantage, a general stability theorem, or nonperiodic/three-dimensional performance.
+
+The single archive combines the complete code and data in their original relative directory structure. README.txt explains how to use the deposit; FILE_INVENTORY.json and SHA256_manifest.json document its contents and checksums.
+
+Version 1.0 adds updated plotting styles and captions, eight final figure sources and exports, dimensionless-unit guidance and an archive verification script. All recorded numerical data and solver implementations are preserved.
