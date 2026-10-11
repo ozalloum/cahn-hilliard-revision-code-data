@@ -1,0 +1,37 @@
+{
+  "n": 100,
+  "maximum_archived_coarse_error_discrepancy": 1.5469570069370775e-13,
+  "methods": {
+    "1": {
+      "l2": 0.07019476406007505,
+      "structure": 0.039101525803604716,
+      "l2_std": 0.001418950835788888,
+      "structure_std": 0.0028430391120536536,
+      "energy_violations": 0
+    },
+    "6": {
+      "l2": 0.01377264116694808,
+      "structure": 0.007196138624432371,
+      "l2_std": 0.0002858301187875614,
+      "structure_std": 0.0005202962958649487,
+      "energy_violations": 0
+    },
+    "12": {
+      "l2": 0.00661539095594893,
+      "structure": 0.003429234712416776,
+      "l2_std": 0.00013786151312601298,
+      "structure_std": 0.00024778052934784113,
+      "energy_violations": 0
+    }
+  },
+  "comparison_provenance": "Recomputed uncorrected baselines and 100-substep reference; learned errors from archived CSVs; no new filter fit.",
+  "six_vs_learned": {
+    "mean_difference": 0.0064695038287483474,
+    "ci95": [
+      0.006435410805178537,
+      0.006503678428992866
+    ],
+    "relative_error_reduction_percent": 46.973588800629045,
+    "structure_error_reduction_percent": 88.26624117110802
+  }
+}
