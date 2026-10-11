@@ -73,3 +73,16 @@ problem. Neither the driver nor the data establish general stability,
 nonperiodic/irregular/3D performance, or a universal solver-speed advantage.
 The piDMD comparison is a reimplementation of the published periodic BCCB
 linear class on this dataset, not a neural-operator benchmark.
+
+FIGURES AND UNITS
+The spatial coordinates, model time, mobility and interface-width parameter
+are dimensionless. Wall-clock timings are reported in seconds.
+
+Run python numerics/validation/figures.py from the extracted archive root to
+rebuild the five validation figure blocks using the saved full data.
+figure_captions.json must remain beside figures.py. To plot an independent
+rerun, set CH_VALIDATION_RESULTS to its result directory before running.
+The figures directory contains all eight final editable TeX figure sources,
+vector PDFs and 300 dpi PNGs. Figures 2, 5, 6 and 8 use distinct line styles
+and markers while preserving colours. Read figures/EXPORT_README.txt for
+compilation details.

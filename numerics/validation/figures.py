@@ -3,9 +3,11 @@
 Full precision numerical fields remain in NPZ files. Finer-grid heatmaps use
 explicit block averages for display only; quantitative errors use full arrays.
 """
+import json
 import numpy as np
 import pandas as pd
 from kernel import *
+CAPTIONS=json.loads((HERE/"figure_captions.json").read_text(encoding="utf-8"))
 
 def block64(u):
     n=u.shape[0]
@@ -39,21 +41,26 @@ def colorbar():
     for j in range(65):lines.append(fr'\fill[valc{j}] ({j},0) rectangle ({j+1.01},2);')
     lines += [r'\draw (0,0) rectangle (65,2);',r'\node[font=\scriptsize] at (0,-2) {$-1.25$};',r'\node[font=\scriptsize] at (32.5,-2) {$0$};',r'\node[font=\scriptsize] at (65,-2) {$1.25$};',r'\node[font=\footnotesize] at (71,1) {$\phi$};',r'\end{tikzpicture}']
     return '\n'.join(lines)
-def plot(series,xlabel,ylabel,title='',logx=False,logy=True,width='.46\\textwidth',legend='legend pos=north west',extra=''):
+def plot(series,xlabel,ylabel,title='',logx=False,logy=True,width='.46\\textwidth',legend='legend pos=north west',extra='',style_offset=0,mark_repeat=None):
     opts=[f'width={width}', 'height=5.4cm', 'grid=major','grid style={gray!15}','tick label style={font=\\footnotesize}',
         'label style={font=\\small}',f'xlabel={{{xlabel}}}',f'ylabel={{{ylabel}}}',f'title={{{title}}}',
         'title style={font=\\small}','legend style={font=\\scriptsize,draw=none}',legend]
+    if not title:opts=[x for x in opts if x!='title={}']
     if extra:opts.append(extra)
     if logx:opts+=['xmode=log']
     if logy:opts+=['ymode=log']
     lines=[r'\begin{tikzpicture}',r'\begin{axis}['+','.join(opts)+']']
     colors=['blue!65!black','orange!85!black','teal!80!black','purple','black','red!70!black']
+    styles=[('solid','*'),('dashed','square*'),('dashdotted','triangle*'),('densely dotted','diamond*'),('dashdotdotted','pentagon*'),('loosely dashed','x')]
     for i,(label,x,y) in enumerate(series):
-        lines += [r'\addplot[thick,mark=*,mark size=1.5pt,'+colors[i%len(colors)]+'] coordinates {'+coords(x,y)+'};',r'\addlegendentry{'+label+'}']
+        style,marker=styles[(i+style_offset)%len(styles)]
+        options=f'thick,{style},mark={marker},mark size=2pt,mark options={{solid}},'+(f'mark repeat={mark_repeat},' if mark_repeat else '')+colors[i%len(colors)]
+        lines += [r'\addplot['+options+'] coordinates {'+coords(x,y)+'};',r'\addlegendentry{'+label+'}']
     lines += [r'\end{axis}',r'\end{tikzpicture}']
     return '\n'.join(lines)
 
 def figure(body,caption,label):
+    caption=CAPTIONS.get(label,caption)
     palette=''
     if 'pgfsetfillcolor{valc' in body:
         for j in range(65):
@@ -70,13 +77,13 @@ def build():
         z=np.load(p);body=''
         for step in [350,700]:
             body+='\n'+r'\par\medskip'+'\n'
-            for method,label in [('ETD_half','Reference'),('C6','Six substeps'),('residual','Residual + safeguard')]:
-                body+=heatmap(z[f'{method}_{step}'],f'{label}, $t={step*DT:g}$')+'\n'+r'\hspace{.3cm}'+'\n'
+            for j,(method,label) in enumerate([('ETD_half','Reference'),('C6','Six substeps'),('residual','Residual + safeguard')]):
+                body+=heatmap(z[f'{method}_{step}'],'('+chr(97+j+(0 if step==350 else 3))+')')+'\n'+r'\hspace{.3cm}'+'\n'
         figures['long']=figure(body,r'Original main-test index zero at the two long horizons on the legacy $64^2$ collocation grid. The reference is independently refined ETDRK4 on that same grid. All samples are shown; the common blue--white--red range is $[-1.25,1.25]$. The corresponding matched errors are reported separately. These fields do not constitute a spatially converged morphology claim.', 'fig:newlong')
     p=DATA/'galerkin_rollout_N256_rectangles_700.npz'
     if p.exists():
         z=np.load(p);body=''
-        for row in [[('initial','Initial'),('ETD_700','Reference, $t=0.07$')],[('C6_700','Six substeps, $t=0.07$'),('refitted_700','Refitted residual, $t=0.07$')]]:
+        for row in [[('initial','(a)'),('ETD_700','(b)')],[('C6_700','(c)'),('refitted_700','(d)')]]:
             body+='\n'+r'\par\medskip'+'\n'
             for key,label in row:body+=heatmap(z[key],label)+'\n'+r'\hspace{.5cm}'+'\n'
         figures['rectangles']=figure(body,r'Smooth periodic two-rectangle test for the dealiased $256^2$ formulation. The newly fitted filter is used, and the reference is same-grid ETDRK4. For display, each cell is the average of a $4\times4$ block; computations, errors and saved fields retain all $256^2$ samples. All panels use $[-1.25,1.25]$. This deterministic geometry lies outside the small-amplitude training regime.', 'fig:rectangles')
@@ -91,8 +98,8 @@ def build():
     p=DATA/'stress_rollout.csv'
     if p.exists():
         f=pd.read_csv(p);sel=f.iloc[::5]
-        body=plot([(name,sel.time,sel['error_'+key]) for key,name in [('safe','Safeguarded'),('unsafe','Unconstrained'),('C6','Six substeps')]],'$t$','Relative field error',title='(a) Stress trajectory',legend='legend style={at={(0.97,0.50)},anchor=east}')
-        body+=r'\hfill'+'\n'+plot([(r'Accepted $\alpha$',sel.time,sel.alpha)],'$t$',r'$\alpha$',title='(b) Accepted fraction')
+        body=plot([(name,sel.time,sel['error_'+key]) for key,name in [('safe','Safeguarded'),('unsafe','Unconstrained'),('C6','Six substeps')]],'$t$','Relative field error',title='(a)',mark_repeat=7,legend='legend style={at={(0.97,0.50)},anchor=east}')
+        body+=r'\hfill'+'\n'+plot([(r'Accepted $\alpha$',sel.time,sel.alpha)],'$t$',r'$\alpha$',title='(b)',style_offset=3,mark_repeat=7)
         figures['stress']=figure(body,r'Activating diagnostic trajectory selected from the separately labeled 12-case exploratory small-step extension: mean 1, standard deviation 0.08, $\epsilon=0.02$ and macro step $10^{-7}$, with the filter trained at $10^{-4}$. Errors use a time-refined reference on the same spatial discretization. All 350 accepted fractions are $2^{-26}$, nearly freezing the safeguarded field. Full energy, mass, error and acceptance records accompany the figure.', 'fig:stress')
     p=DATA/'cost_summary.csv'
     if p.exists():
