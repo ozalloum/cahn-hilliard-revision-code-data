@@ -6,3 +6,9 @@ results_reproduced/
 *.npz
 *.zip
 numerics/validation/figure_*.tex
+
+!r2/Supplementary_Material_S2.zip
+!r2/Supplementary_Material_S2/results/exploratory_filters.npz
+r2/Supplementary_Material_S2/reevaluated_results/
+r2/Supplementary_Material_S2/independently_regenerated/
+r2/Supplementary_Material_S2/step_conditioned_results/

@@ -2,29 +2,24 @@
 
 Materials for **A Spectral-Residual Correction for Cahn–Hilliard Simulation: Accuracy, Safeguards and Computational Cost**.
 
-## Download
+## Code and data
 
-Download **Cahn_Hilliard_code_and_validation_data.zip** from [release v1.0](https://github.com/ozalloum/cahn-hilliard-revision-code-data/releases/tag/v1.0). It includes all reproduction code, settings, seeds, CSV results, model arrays, full fields, diagnostics, timing summaries and the eight final figures. `PACKAGE_SHA256.txt` provides the archive checksum.
+- **R2:** [Supplementary Material S2](r2/Supplementary_Material_S2/README.md) contains the step-conditioned correction experiment, frozen coefficients, results for 100 held-out fields at four step sizes, and Figure 9. [Download the ZIP](r2/Supplementary_Material_S2.zip?raw=true).
+- **Original archive:** [Release v1.0](https://github.com/ozalloum/cahn-hilliard-revision-code-data/releases/tag/v1.0) contains the complete original reproduction and validation data. Download `Cahn_Hilliard_code_and_validation_data.zip`; the automatically generated source archives omit the full data payload.
+- **Artwork:** [Figure 2](r2/artwork/Figure_2.tiff?raw=true) contains the corrected discrete-energy axis label. The original figure sources remain in `figures/`.
 
-The Git repository includes readable code, result tables and editable figure sources. The complete release ZIP also includes the 174 NPZ files and figure PDF/PNG exports.
+The R2 supplement is separate from v1.0. The top-level `numerics/`, `figures/`, archive inventories and `README.txt` describe the original archive.
 
-## Reproduce
+## Reproduction
 
-Extract the complete archive into a new directory and run from its root:
+After cloning or extracting the repository, verify the R2 files:
 
 ```sh
-python -m pip install -r numerics/validation/requirements.txt
-python verify_archive.py
-python numerics/validation/run_campaign.py --stage verify --output-dir verification_results
-python numerics/validation/figures.py
+python r2/verify_r2.py
 ```
 
-For an independent full campaign, run `python numerics/validation/run_campaign.py --stage all --output-dir results_reproduced`. Use a new output directory. See `numerics/validation/REPRODUCIBILITY.txt` for environment, stage dependencies and output details, and `figures/EXPORT_README.txt` for figure compilation.
-
-The spatial coordinates, model time, mobility and interface-width parameter are dimensionless; wall-clock timings are in seconds.
-
-The original fitted array was not retained. Its documented reconstruction reproduces the archived short-time metrics to roundoff. Original and dealiased spatial formulations are distinguished in the documentation.
+Follow the [S2 instructions](r2/Supplementary_Material_S2/README.md) to evaluate the frozen coefficients or refit the models. Use a new output directory for each run. For the original campaign, follow `numerics/validation/REPRODUCIBILITY.txt` in the complete v1.0 archive.
 
 ## License and citation
 
-[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). External dependencies retain their own licenses. Cite the release version or Git commit used.
+[CC BY 4.0](LICENSE.txt). External dependencies retain their own licenses. Cite the version and commit used; see [CITATION.cff](CITATION.cff).
