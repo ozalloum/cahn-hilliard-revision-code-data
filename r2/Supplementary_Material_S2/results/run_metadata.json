@@ -1,0 +1,10 @@
+{
+  "train_trajectories": 600,
+  "snapshots": 16,
+  "dt_training": 0.0001,
+  "training_seconds": null,
+  "numpy_version": "2.3.5",
+  "peak_R": 0.0016447738683198518,
+  "peak_B": 0.033077392340934854,
+  "method_status": "Step-conditioned Fourier correction"
+}
