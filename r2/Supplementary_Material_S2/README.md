@@ -1,5 +1,9 @@
 # Supplementary Material S2: step-conditioned correction experiment
 
+**Author:** Othman H. Y. Zalloum
+
+**Affiliation:** Department of Applied Mathematics and Physics, Palestine Polytechnic University, Hebron, Palestine
+
 Code, frozen coefficients and validation data for **A Spectral-Residual Correction for Cahn–Hilliard Simulation: Accuracy, Safeguards and Computational Cost**.
 
 ## Contents
