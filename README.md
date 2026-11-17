@@ -2,23 +2,36 @@
 
 Materials for **A Spectral-Residual Correction for Cahn–Hilliard Simulation: Accuracy, Safeguards and Computational Cost**.
 
-## Code and data
+**Author:** Othman H. Y. Zalloum  
+**Affiliation:** Department of Applied Mathematics and Physics, Palestine Polytechnic University, Hebron, Palestine
 
-- **R2:** [Supplementary Material S2](r2/Supplementary_Material_S2/README.md) contains the step-conditioned correction experiment, frozen coefficients, results for 100 held-out fields at four step sizes, and Figure 9. [Download the ZIP](r2/Supplementary_Material_S2.zip?raw=true).
-- **Original archive:** [Release v1.0](https://github.com/ozalloum/cahn-hilliard-revision-code-data/releases/tag/v1.0) contains the complete original reproduction and validation data. Download `Cahn_Hilliard_code_and_validation_data.zip`; the automatically generated source archives omit the full data payload.
-- **Artwork:** [Figure 2](r2/artwork/Figure_2.tiff?raw=true) contains the corrected discrete-energy axis label. The original figure sources remain in `figures/`.
+## Manuscript and supporting materials
 
-The R2 supplement is separate from v1.0. The top-level `numerics/`, `figures/`, archive inventories and `README.txt` describe the original archive.
+- [Clean R2 manuscript](r2/COMPHY_R2_clean.pdf)
+- [Marked R2 manuscript](r2/COMPHY_R2_marked.pdf)
+- [Supplementary Material S1: reproduction guide](r2/Supplementary_Material_S1_Access_Guide.pdf)
+- [LaTeX sources and figure exports](r2/COMPHY_R2_LaTeX_Source.zip?raw=true)
+- [Download all R2 research materials](r2/COMPHY_R2_Research_Materials.zip?raw=true)
 
-## Reproduction
+The [R2 directory](r2/README.md) provides the current manuscript files and integrity checks.
 
-After cloning or extracting the repository, verify the R2 files:
+## Numerical code and validation data
+
+The manuscript uses the numerical code and complete validation data in [release v1.0](https://github.com/ozalloum/cahn-hilliard-revision-code-data/releases/tag/v1.0).
+
+Download **[Cahn_Hilliard_code_and_validation_data.zip](https://github.com/ozalloum/cahn-hilliard-revision-code-data/releases/download/v1.0/Cahn_Hilliard_code_and_validation_data.zip)**, approximately 306 MB. GitHub's automatically generated source archives omit the full validation-data payload.
+
+The top-level `numerics/`, `figures/`, archive inventories and `README.txt` document that numerical archive. Its code and results are unchanged.
+
+## Reproduction and integrity
+
+Follow [Supplementary Material S1](r2/Supplementary_Material_S1_Access_Guide.pdf) and `numerics/validation/REPRODUCIBILITY.txt` in the complete numerical archive. Use a separate output directory for an independent campaign.
+
+After cloning or extracting this repository, verify the R2 materials:
 
 ```sh
 python r2/verify_r2.py
 ```
-
-Follow the [S2 instructions](r2/Supplementary_Material_S2/README.md) to evaluate the frozen coefficients or refit the models. Use a new output directory for each run. For the original campaign, follow `numerics/validation/REPRODUCIBILITY.txt` in the complete v1.0 archive.
 
 ## License and citation
 
