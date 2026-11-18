@@ -5,15 +5,12 @@ Materials for **A Spectral-Residual Correction for Cahn–Hilliard Simulation: A
 **Author:** Othman H. Y. Zalloum  
 **Affiliation:** Department of Applied Mathematics and Physics, Palestine Polytechnic University, Hebron, Palestine
 
-## Manuscript and supporting materials
+## Figures and supplementary material
 
-- [Clean R2 manuscript](r2/COMPHY_R2_clean.pdf)
-- [Marked R2 manuscript](r2/COMPHY_R2_marked.pdf)
 - [Supplementary Material S1: reproduction guide](r2/Supplementary_Material_S1_Access_Guide.pdf)
-- [LaTeX sources and figure exports](r2/COMPHY_R2_LaTeX_Source.zip?raw=true)
-- [Download all R2 research materials](r2/COMPHY_R2_Research_Materials.zip?raw=true)
+- [Download figures and the supplementary guide](r2/COMPHY_R2_Research_Materials.zip?raw=true)
 
-The [R2 directory](r2/README.md) provides the current manuscript files and integrity checks.
+The [R2 directory](r2/README.md) provides the figure files, supplementary guide and integrity checks.
 
 ## Numerical code and validation data
 
